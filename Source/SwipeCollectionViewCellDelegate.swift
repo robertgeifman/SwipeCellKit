@@ -59,7 +59,7 @@ public protocol SwipeCollectionViewCellDelegate: class {
      
      - parameter orientation: The side of the item.
      */
-    func collectionView(_ collectionView: UICollectionView, didEndEditingItemAt indexPath: IndexPath?, for orientation: SwipeActionsOrientation)
+    func collectionView(_ collectionView: UICollectionView, didEndEditingItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation)
     
     /**
      Asks the delegate for visibile rectangle of the collection view, which is used to ensure swipe actions are vertically centered within the visible portion of the item.
@@ -83,7 +83,7 @@ public extension SwipeCollectionViewCellDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willBeginEditingItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) {}
     
-    func collectionView(_ collectionView: UICollectionView, didEndEditingItemAt indexPath: IndexPath?, for orientation: SwipeActionsOrientation) {}
+    func collectionView(_ collectionView: UICollectionView, didEndEditingItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) {}
     
     func visibleRect(for collectionView: UICollectionView) -> CGRect? {
         return nil
