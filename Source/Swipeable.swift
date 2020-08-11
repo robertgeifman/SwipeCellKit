@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - Internal 
-
+@available(iOS 10.0, tvOS 11, *)
 protocol Swipeable {
     var state: SwipeState { get set }
     
@@ -23,9 +23,12 @@ protocol Swipeable {
     var panGestureRecognizer: UIGestureRecognizer { get }
 }
 
+@available(iOS 10.0, tvOS 11, *)
 extension SwipeTableViewCell: Swipeable {}
+@available(iOS 10.0, tvOS 11, *)
 extension SwipeCollectionViewCell: Swipeable {}
 
+@available(iOS 10.0, tvOS 11, *)
 enum SwipeState: Int {
     case center = 0
     case left

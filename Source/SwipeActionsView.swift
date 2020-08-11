@@ -7,17 +7,20 @@
 
 import UIKit
 
+@available(iOS 10.0, tvOS 11, *)
 protocol SwipeActionsViewDelegate: class {
     func swipeActionsView(_ swipeActionsView: SwipeActionsView, didSelect action: SwipeAction)
 }
 
+@available(iOS 11, tvOS 11, *)
 class SwipeActionsView: UIView {
     weak var delegate: SwipeActionsViewDelegate?
     
     let transitionLayout: SwipeTransitionLayout
     var layoutContext: ActionsViewLayoutContext
     
-    var feedbackGenerator: SwipeFeedback
+	@available(tvOS, unavailable)
+	var feedbackGenerator: SwipeFeedback
     
     var expansionAnimator: SwipeAnimator?
     
@@ -38,7 +41,6 @@ class SwipeActionsView: UIView {
     }
     
     var safeAreaMargin: CGFloat {
-        guard #available(iOS 11, *) else { return 0 }
         guard let scrollView = self.safeAreaInsetView else { return 0 }
         return orientation == .left ? scrollView.safeAreaInsets.left : scrollView.safeAreaInsets.right
     }
@@ -117,11 +119,11 @@ class SwipeActionsView: UIView {
         if let backgroundColor = options.backgroundColor {
             self.backgroundColor = backgroundColor
         }
-        else if #available(iOS 13.0, *) {
-            backgroundColor = UIColor.systemGray5
-        } else {
+		if #available(iOS 11, *) {
+			backgroundColor = UIColor.systemGray
+		} else {
             backgroundColor = #colorLiteral(red: 0.7803494334, green: 0.7761332393, blue: 0.7967314124, alpha: 1)
-        }
+		}
     #else
         if let backgroundColor = options.backgroundColor {
             self.backgroundColor = backgroundColor
@@ -222,13 +224,7 @@ class SwipeActionsView: UIView {
             expansionAnimator?.stopAnimation(true)
         }
         
-        if #available(iOS 10, *) {
             expansionAnimator = UIViewPropertyAnimator(duration: timingParameters?.duration ?? 0.6, dampingRatio: 1.0)
-        } else {
-            expansionAnimator = UIViewSpringAnimator(duration: timingParameters?.duration ?? 0.6,
-                                                     damping: 1.0,
-                                                     initialVelocity: 1.0)
-        }
         
         expansionAnimator?.addAnimations {
             self.setNeedsLayout()
@@ -331,7 +327,7 @@ class SwipeActionButtonWrapperView: UIView {
             default:
             #if canImport(Combine)
                 if #available(iOS 13.0, *) {
-                    actionBackgroundColor = UIColor.systemGray3
+                    actionBackgroundColor = UIColor.systemGray
                 } else {
                     actionBackgroundColor = #colorLiteral(red: 0.7803494334, green: 0.7761332393, blue: 0.7967314124, alpha: 1)
                 }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 10.0, tvOS 11, *)
 extension SwipeCollectionViewCell {
     /// The point at which the origin of the cell is offset from the non-swiped origin.
     public var swipeOffset: CGFloat {

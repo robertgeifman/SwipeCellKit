@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 10.0, tvOS 11, *)
 extension UITableView {
     var swipeCells: [SwipeTableViewCell] {
         return visibleCells.compactMap({ $0 as? SwipeTableViewCell })
@@ -17,6 +18,7 @@ extension UITableView {
     }
 }
 
+@available(iOS 10.0, tvOS 11, *)
 extension UICollectionView {
     var swipeCells: [SwipeCollectionViewCell] {
         return visibleCells.compactMap({ $0 as? SwipeCollectionViewCell })
@@ -35,6 +37,7 @@ extension UICollectionView {
     }
 }
 
+@available(iOS 10.0, tvOS 11, *)
 extension UIScrollView {
     var swipeables: [Swipeable] {
         switch self {

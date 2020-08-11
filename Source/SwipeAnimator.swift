@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 10.0, tvOS 11, *)
 protocol SwipeAnimator {
     /// A Boolean value indicating whether the animation is currently running.
     var isRunning: Bool { get }
@@ -45,7 +46,7 @@ protocol SwipeAnimator {
     func stopAnimation(_ withoutFinishing: Bool)
 }
 
-@available(iOS 10.0, *)
+@available(iOS 10.0, tvOS 11, *)
 extension UIViewPropertyAnimator: SwipeAnimator {
     func addCompletion(completion: @escaping (Bool) -> Void) {
         addCompletion { position in

@@ -10,6 +10,7 @@ import UIKit
 /**
  The `SwipeCollectionViewCellDelegate` protocol is adopted by an object that manages the display of action buttons when the item is swiped.
  */
+@available(iOS 11, tvOS 11, *)
 public protocol SwipeCollectionViewCellDelegate: class {
     /**
      Asks the delegate for the actions to display in response to a swipe in the specified item.
@@ -76,6 +77,7 @@ public protocol SwipeCollectionViewCellDelegate: class {
 /**
  Default implementation of `SwipeCollectionViewCellDelegate` methods
  */
+@available(iOS 11, tvOS 11, *)
 public extension SwipeCollectionViewCellDelegate {
     func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         return SwipeOptions()

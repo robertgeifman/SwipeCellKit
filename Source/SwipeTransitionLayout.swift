@@ -9,6 +9,7 @@ import UIKit
 
 // MARK: - Layout Protocol
 
+@available(iOS 10.0, tvOS 11, *)
 protocol SwipeTransitionLayout {
     func container(view: UIView, didChangeVisibleWidthWithContext context: ActionsViewLayoutContext)
     func layout(view: UIView, atIndex index: Int, with context: ActionsViewLayoutContext)
@@ -16,7 +17,7 @@ protocol SwipeTransitionLayout {
 }
 
 // MARK: - Layout Context 
-
+@available(iOS 10.0, tvOS 11, *)
 struct ActionsViewLayoutContext {
     let numberOfActions: Int
     let orientation: SwipeActionsOrientation
@@ -43,6 +44,7 @@ struct ActionsViewLayoutContext {
 
 // MARK: - Supported Layout Implementations 
 
+@available(iOS 10.0, tvOS 11, *)
 class BorderTransitionLayout: SwipeTransitionLayout {
     func container(view: UIView, didChangeVisibleWidthWithContext context: ActionsViewLayoutContext) {
     }
@@ -61,6 +63,7 @@ class BorderTransitionLayout: SwipeTransitionLayout {
     }
 }
 
+@available(iOS 10.0, tvOS 11, *)
 class DragTransitionLayout: SwipeTransitionLayout {
     func container(view: UIView, didChangeVisibleWidthWithContext context: ActionsViewLayoutContext) {
         view.bounds.origin.x = (context.contentSize.width - context.visibleWidth) * context.orientation.scale
@@ -76,6 +79,7 @@ class DragTransitionLayout: SwipeTransitionLayout {
     }
 }
 
+@available(iOS 10.0, tvOS 11, *)
 class RevealTransitionLayout: DragTransitionLayout {
     override func container(view: UIView, didChangeVisibleWidthWithContext context: ActionsViewLayoutContext) {
         let width = context.minimumButtonWidth * CGFloat(context.numberOfActions)

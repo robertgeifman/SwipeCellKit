@@ -8,9 +8,11 @@
 import UIKit
 
 /// :nodoc:
+@available(iOS 11, tvOS 11, *)
 public typealias SwipeTableOptions = SwipeOptions
 
 /// The `SwipeOptions` class provides options for transistion and expansion behavior for swiped cell.
+@available(iOS 10.0, tvOS 11, *)
 public struct SwipeOptions {
     /// The transition style. Transition is the style of how the action buttons are exposed during the swipe.
     public var transitionStyle: SwipeTransitionStyle = .border

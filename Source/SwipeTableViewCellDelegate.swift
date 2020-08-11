@@ -10,6 +10,7 @@ import UIKit
 /**
  The `SwipeTableViewCellDelegate` protocol is adopted by an object that manages the display of action buttons when the cell is swiped.
  */
+@available(iOS 11, tvOS 11, *)
 public protocol SwipeTableViewCellDelegate: class {
     
     /**
@@ -77,6 +78,7 @@ public protocol SwipeTableViewCellDelegate: class {
 /**
  Default implementation of `SwipeTableViewCellDelegate` methods
  */
+@available(iOS 11, tvOS 11, *)
 public extension SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         return SwipeOptions()

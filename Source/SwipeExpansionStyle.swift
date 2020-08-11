@@ -8,7 +8,8 @@
 import UIKit
 
 /// Describes the expansion style.  Expansion is the behavior when the cell is swiped past a defined threshold.
-public struct SwipeExpansionStyle {    
+@available(iOS 10.0, tvOS 11, *)
+public struct SwipeExpansionStyle {
     /// The default action performs a selection-type behavior. The cell bounces back to its unopened state upon selection and the row remains in the table/collection view.
     public static var selection: SwipeExpansionStyle { return SwipeExpansionStyle(target: .percentage(0.5),
                                                                                   elasticOverscroll: true,
@@ -111,7 +112,8 @@ public struct SwipeExpansionStyle {
     }
 }
 
-extension SwipeExpansionStyle {    
+@available(iOS 10.0, tvOS 11, *)
+extension SwipeExpansionStyle {
     /// Describes the relative target expansion threshold. Expansion will occur at the specified value.
     public enum Target {
         /// The target is specified by a percentage.
@@ -210,6 +212,7 @@ extension SwipeExpansionStyle {
     }
 }
 
+@available(iOS 10.0, tvOS 11, *)
 extension SwipeExpansionStyle.Target: Equatable {
     /// :nodoc:
     public static func ==(lhs: SwipeExpansionStyle.Target, rhs: SwipeExpansionStyle.Target) -> Bool {
@@ -224,6 +227,7 @@ extension SwipeExpansionStyle.Target: Equatable {
     }
 }
 
+@available(iOS 10.0, tvOS 11, *)
 extension SwipeExpansionStyle.CompletionAnimation: Equatable {
     /// :nodoc:
     public static func ==(lhs: SwipeExpansionStyle.CompletionAnimation, rhs: SwipeExpansionStyle.CompletionAnimation) -> Bool {

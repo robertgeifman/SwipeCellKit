@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+@available(iOS 10.0, tvOS 11, *)
 protocol SwipeControllerDelegate: class {
     
     func swipeController(_ controller: SwipeController, canBeginEditingSwipeableFor orientation: SwipeActionsOrientation) -> Bool
@@ -26,8 +27,8 @@ protocol SwipeControllerDelegate: class {
     
 }
 
+@available(iOS 10.0, tvOS 11, *)
 class SwipeController: NSObject {
-    
     weak var swipeable: (UIView & Swipeable)?
     weak var actionsContainerView: UIView?
     
@@ -246,19 +247,11 @@ class SwipeController: NSObject {
         
         let animator: SwipeAnimator = {
             if velocity != 0 {
-                if #available(iOS 10, *) {
-                    let velocity = CGVector(dx: velocity, dy: velocity)
-                    let parameters = UISpringTimingParameters(mass: 1.0, stiffness: 100, damping: 18, initialVelocity: velocity)
-                    return UIViewPropertyAnimator(duration: 0.0, timingParameters: parameters)
-                } else {
-                    return UIViewSpringAnimator(duration: duration, damping: 1.0, initialVelocity: velocity)
-                }
+				let velocity = CGVector(dx: velocity, dy: velocity)
+				let parameters = UISpringTimingParameters(mass: 1.0, stiffness: 100, damping: 18, initialVelocity: velocity)
+				return UIViewPropertyAnimator(duration: 0.0, timingParameters: parameters)
             } else {
-                if #available(iOS 10, *) {
-                    return UIViewPropertyAnimator(duration: duration, dampingRatio: 1.0)
-                } else {
-                    return UIViewSpringAnimator(duration: duration, damping: 1.0)
-                }
+				return UIViewPropertyAnimator(duration: duration, dampingRatio: 1.0)
             }
         }()
         
@@ -342,6 +335,7 @@ class SwipeController: NSObject {
     
 }
 
+@available(iOS 10.0, tvOS 11, *)
 extension SwipeController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer == tapGestureRecognizer {
@@ -369,6 +363,7 @@ extension SwipeController: UIGestureRecognizerDelegate {
     }
 }
 
+@available(iOS 10.0, tvOS 11, *)
 extension SwipeController: SwipeActionsViewDelegate {
     func swipeActionsView(_ swipeActionsView: SwipeActionsView, didSelect action: SwipeAction) {
         perform(action: action)
