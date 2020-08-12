@@ -19,9 +19,9 @@ class SwipeActionsView: UIView {
     let transitionLayout: SwipeTransitionLayout
     var layoutContext: ActionsViewLayoutContext
     
-	@available(tvOS, unavailable)
-	var feedbackGenerator: SwipeFeedback
-    
+#if !os(tvOS)
+	var feedbackGenerator: SwipeFeedback?
+#endif
     var expansionAnimator: SwipeAnimator?
     
     var expansionDelegate: SwipeExpanding? {
@@ -106,9 +106,10 @@ class SwipeActionsView: UIView {
         
         self.layoutContext = ActionsViewLayoutContext(numberOfActions: actions.count, orientation: orientation)
         
-        feedbackGenerator = SwipeFeedback(style: .light)
-        feedbackGenerator.prepare()
-        
+#if !os(tvOS)
+        	feedbackGenerator = SwipeFeedback(style: .light)
+			feedbackGenerator?.prepare()
+#endif
         super.init(frame: .zero)
         
         clipsToBounds = true
@@ -119,11 +120,7 @@ class SwipeActionsView: UIView {
         if let backgroundColor = options.backgroundColor {
             self.backgroundColor = backgroundColor
         }
-		if #available(iOS 11, *) {
-			backgroundColor = UIColor.systemGray
-		} else {
-            backgroundColor = #colorLiteral(red: 0.7803494334, green: 0.7761332393, blue: 0.7967314124, alpha: 1)
-		}
+		backgroundColor = UIColor.systemGray
     #else
         if let backgroundColor = options.backgroundColor {
             self.backgroundColor = backgroundColor
@@ -213,11 +210,12 @@ class SwipeActionsView: UIView {
         
         self.expanded = expanded
         
+#if !os(tvOS)
         if feedback {
-            feedbackGenerator.impactOccurred()
-            feedbackGenerator.prepare()
+            feedbackGenerator?.impactOccurred()
+            feedbackGenerator?.prepare()
         }
-        
+#endif
         let timingParameters = expansionDelegate?.animationTimingParameters(buttons: buttons.reversed(), expanding: expanded)
         
         if expansionAnimator?.isRunning == true {
