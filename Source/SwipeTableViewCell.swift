@@ -40,13 +40,13 @@ open class SwipeTableViewCell: UITableViewCell {
     /// :nodoc:
     open override var frame: CGRect {
         set { super.frame = state.isActive ? CGRect(origin: CGPoint(x: frame.minX, y: newValue.minY), size: newValue.size) : newValue }
-        get { return super.frame }
+        get { super.frame }
     }
     
     /// :nodoc:
     open override var layoutMargins: UIEdgeInsets {
         get {
-            return frame.origin.x != 0 ? swipeController.originalLayoutMargins : super.layoutMargins
+            frame.origin.x != 0 ? swipeController.originalLayoutMargins : super.layoutMargins
         }
         set {
             super.layoutMargins = newValue
@@ -137,7 +137,7 @@ open class SwipeTableViewCell: UITableViewCell {
     }
     
     func contains(point: CGPoint) -> Bool {
-        return point.y > frame.minY && point.y < frame.maxY
+        point.y > frame.minY && point.y < frame.maxY
     }
     
     /// :nodoc:
@@ -149,7 +149,7 @@ open class SwipeTableViewCell: UITableViewCell {
     
     /// :nodoc:
     override open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return swipeController.gestureRecognizerShouldBegin(gestureRecognizer)
+        swipeController.gestureRecognizerShouldBegin(gestureRecognizer)
     }
     
     /// :nodoc:
