@@ -58,7 +58,6 @@ class SwipeController: NSObject {
     init(swipeable: UIView & Swipeable, actionsContainerView: UIView) {
         self.swipeable = swipeable
         self.actionsContainerView = actionsContainerView
-        
         super.init()
         
         configure()
@@ -220,6 +219,7 @@ class SwipeController: NSObject {
                                            orientation: orientation,
                                            actions: actions)
         actionsView.delegate = self
+//        actionsView.isOpaque = actionsContainerView.isOpaque
         
         actionsContainerView.addSubview(actionsView)
         
