@@ -22,14 +22,13 @@ open class SwipeCollectionViewCell: UICollectionViewCell {
     var state = SwipeState.center
     var actionsView: SwipeActionsView?
     var scrollView: UIScrollView? {
-        return collectionView
+        collectionView
     }
     var indexPath: IndexPath? {
-        return collectionView?.indexPath(for: self)
+        collectionView?.indexPath(for: self)
     }
-    var panGestureRecognizer: UIGestureRecognizer
-    {
-        return swipeController.panGestureRecognizer;
+    var panGestureRecognizer: UIGestureRecognizer? {
+    	swipeController.panGestureRecognizer
     }
     
     var swipeController: SwipeController!

@@ -345,9 +345,9 @@ extension SwipeController: UIGestureRecognizerDelegate {
             
             let swipedCell = scrollView?.swipeables.first(where: {
                 $0.state.isActive ||
-                    $0.panGestureRecognizer.state == .began ||
-                    $0.panGestureRecognizer.state == .changed ||
-                    $0.panGestureRecognizer.state == .ended
+                    $0.panGestureRecognizer?.state == .began ||
+                    $0.panGestureRecognizer?.state == .changed ||
+                    $0.panGestureRecognizer?.state == .ended
             })
             return swipedCell == nil ? false : true
         }
